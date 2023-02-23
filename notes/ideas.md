@@ -51,11 +51,10 @@ Mostra data e horário.
 Mostra possíveis tarefas para serem completadas nesse dia.
 
 ##  Configurações
-* Possibilidade de mudar a fonte e tamanho.
+* Possibilidade de mudar a fonte.
 * Possibilidade de mudar a cor primária.
 * Possibilidade de mudar o tema para claro ou escuro.
 * Possibilidade de mudar o fundo com cores pré-definidas no aplicativo ou escolher uma imagem do computador.
-* Possibilidade de mudar o arredondamento das bordas.
 
 ## Widgets
 

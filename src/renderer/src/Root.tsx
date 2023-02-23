@@ -5,7 +5,7 @@ function Root(): JSX.Element {
   return (
     <>
       <Nav />
-      <div className="absolute left-72 p-5">
+      <div className="absolute left-72 p-6 text-white">
         <Outlet />
       </div>
     </>

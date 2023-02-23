@@ -1,13 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider, } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from './Root'
 import './assets/index.css'
 
-// pages
+// Pages
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Settings from './pages/Settings';
+import AddWidget from './pages/AddWidget';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />
+      },
+      {
+        path: "/add_widget",
+        element: <AddWidget />
       },
       {
         path: "/settings",

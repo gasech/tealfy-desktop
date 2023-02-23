@@ -1,4 +1,3 @@
-import notesImg from '../assets/notes.jpg'
 import { Icon } from '@iconify/react'
 import { useState, useRef, useCallback } from "react";
 import { Link } from "react-router-dom"
@@ -8,32 +7,33 @@ function Nav(): JSX.Element {
   const dragOverItem: any = useRef();
   const draggedItem: any = useRef();
 
-
   const [widgetList, setWidgetList] = useState([
     {
       id: 0,
       name: "School notes",
-      type: "notes"
+      type: "notes",
+      image: "https://i.pinimg.com/564x/fe/f2/9b/fef29bb76af39f6689de29c0534526ea.jpg"
     }, {
       id: 1,
       name: "Work notes",
-      type: "notes"
+      type: "notes",
+      image: "https://64.media.tumblr.com/80daec87a3196684b248c11e506d460b/tumblr_o0geflpA2y1upe1ufo1_540.gifv"
     }, {
       id: 2,
       name: "Freelancing tasks",
-      type: "tasks"
+      type: "tasks",
+      image: "https://64.media.tumblr.com/e3e9cae10225425573f628de91c9570e/tumblr_pdlaisQQrO1xdypq5o1_500.gifv"
     },
   ])
 
-  const [startPosX, setStartPosX] = useState(0);
-  const [startPosY, setStartPosY] = useState(0);
+  const [, setStartPosX] = useState(0);
+  const [, setStartPosY] = useState(0);
 
   const positionHandler = useCallback((positionX: number, positionY: number) => {
     setStartPosX(positionX);
     setStartPosY(positionY);
   }, []);
 
-  // TODO: FIX ERRORS, ADD PLACEHOLDERS AND ANIMATIONS TO DRAG AND DROP
   const dragStart = (e: any, position: number) => {
     dragItem.current = position;
     positionHandler(e.clientX, e.clientY);
@@ -62,24 +62,16 @@ function Nav(): JSX.Element {
     setWidgetList(copyListItems);
   };
 
-  // const dragOver = (e: any, position: number) => {
-  //   if (dragItem.current != position) return;
-  //   let posX = e.clientX - startPosX;
-  //   let posY = e.clientY - startPosY;
-  //   e.currentTarget.style.transform = `translate(${posX}px, ${posY}px)`
-  // }
-
   return (
     <aside className="bg-neutral-800 absolute left-0 w-72 h-full overflow-hidden">
       <nav
         className="py-1"
       >
         <ul>
-          <li
-          >
+          <li>
             <Link
               to="/"
-              className="text-white font-light text-lg px-3 py-3 w-full cursor-pointer flex gap-3 items-center hover:bg-neutral-700"
+              className="text-white font-light text-lg px-3 py-3 w-full cursor-pointer flex gap-3 items-center"
             >
               <img
                 src="https://i.pinimg.com/474x/b7/1a/67/b71a67beb1eb35251e3c9fdd0401ab2c.jpg"
@@ -89,7 +81,7 @@ function Nav(): JSX.Element {
               <span className="whitespace-nowrap overflow-hidden overflow-ellipsis w-40">Home</span>
             </Link>
           </li>
-          <div role="separator" className="w-64 h-px bg-neutral-500 my-2 mx-auto">
+          <div role="separator" className="w-72 h-px bg-neutral-500 my-2 mx-auto">
           </div>
         </ul>
         <ul
@@ -107,10 +99,10 @@ function Nav(): JSX.Element {
               >
                 <Link
                   to=""
-                  className="px-3 py-3 w-full h-full cursor-pointer flex gap-3 items-center hover:bg-neutral-700"
+                  className="px-3 py-3 w-full h-full cursor-pointer flex gap-3 items-center"
                 >
                   <img
-                    src={notesImg}
+                    src={widget.image}
                     alt="some random image"
                     className="w-12 h-12 object-cover "
                   />
@@ -133,8 +125,8 @@ function Nav(): JSX.Element {
             className="flex justify-center duration-300 mt-3"
           >
             <Link
-              to=""
-              className="w-11/12 text-center border-dashed border border-white py-3"
+              to="/add_widget"
+              className="w-11/12 text-center border-dashed border-2 border-neutral-500 py-3"
             >
               Add new widget
             </Link>
@@ -146,7 +138,7 @@ function Nav(): JSX.Element {
       >
         <Link
           to="/settings"
-          className="text-white font-light text-lg px-3 py-3 w-full cursor-pointer flex gap-3 items-center hover:bg-neutral-700"
+          className="text-white font-light text-lg px-3 py-3 w-full cursor-pointer flex gap-3 items-center"
         >
           <img
             src="https://pbs.twimg.com/media/EhFNVcRXcAAvL_G.jpg"
