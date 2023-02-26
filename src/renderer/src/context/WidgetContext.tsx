@@ -1,5 +1,5 @@
 import { createContext, Dispatch, SetStateAction } from "react"
-import Widget from "../types/Widget";
+import Widget from "../models/Widget";
 
 interface IWidgetContext {
   widgets: Widget[];

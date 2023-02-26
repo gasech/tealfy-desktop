@@ -1,4 +1,4 @@
-import Widget from "@renderer/types/Widget"
+import Widget from "@renderer/models/Widget"
 import { useState } from "react"
 import WidgetContext from "@renderer/context/WidgetContext";
 

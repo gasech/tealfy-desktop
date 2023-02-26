@@ -47,7 +47,7 @@ function Nav(): JSX.Element {
   };
 
   return (
-    <aside className="bg-neutral-800 absolute left-0 w-72 h-full overflow-hidden">
+    <aside className="bg-neutral-800 absolute left-0 w-72 h-screen overflow-clip">
       <nav
         className="py-1"
       >
@@ -66,11 +66,11 @@ function Nav(): JSX.Element {
               <span className="whitespace-nowrap overflow-hidden overflow-ellipsis w-40">Home</span>
             </Link>
           </li>
-          <div role="separator" className="w-[263px] h-px bg-neutral-500 my-2 mx-auto">
+          <div role="separator" className="w-[264px] h-px bg-neutral-500 my-2 mx-auto">
           </div>
         </ul>
         <ul
-          className="text-white flex flex-col font-light text-lg gap-1 wrap"
+          className="pb-[218px] h-screen text-white flex flex-col font-light text-lg gap-0 overflow-y-scroll"
         >
           {widgets.map((widget, index) => {
             return (
@@ -89,12 +89,12 @@ function Nav(): JSX.Element {
                   <img
                     src={widget.image}
                     alt={`A beautiful ${widget.type} image`}
-                    className="w-12 h-12 object-cover "
+                    className="w-12 h-12 object-cover"
                   />
                   <span className="whitespace-nowrap overflow-hidden overflow-ellipsis w-40">{widget.name}</span>
                 </Link>
                 <button
-                  className="hidden absolute hover:bg-neutral-600 group-hover:block rounded-full p-1 right-2"
+                  className="hidden hover:bg-neutral-600 group-hover:block rounded-full p-1 mr-3"
                 >
                   <Icon
                     icon="mdi:dots-horizontal"
@@ -111,7 +111,7 @@ function Nav(): JSX.Element {
           >
             <Link
               to="/add_widget"
-              className="w-11/12 transition-all text-center text-neutral-300 border-dashed border-2 border-neutral-300 py-2 hover:border-neutral-100 hover:text-neutral-100"
+              className="w-10/12 transition-all text-center text-neutral-400 border-dashed border border-neutral-400 py-2 hover:border-neutral-100 hover:text-neutral-100"
             >
               Add new widget
             </Link>

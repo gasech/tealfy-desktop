@@ -1,4 +1,18 @@
+import WidgetContext from "@renderer/context/WidgetContext";
+import { useContext } from "react";
+
 const AddWidget = (): JSX.Element => {
+  const { widgets, setWidgets } = useContext(WidgetContext);
+
+  const handleForm = () => {
+    setWidgets([...widgets, {
+      id: widgets.length + 1,
+      name: "new widgeaaaaaaaat",
+      type: "notes",
+      image: "https://64.media.tumblr.com/d3873273b74b8a978ee935c85208a7a5/tumblr_paccifdfRh1x86knlo1_500.gifv"
+    }])
+  }
+
   return (
     <>
       <h1 className="text-4xl">Add a new widget</h1>
@@ -12,7 +26,7 @@ const AddWidget = (): JSX.Element => {
         />
       </div>
       <div className="flex flex-col gap-1 mt-5">
-        <label htmlFor="image-url" className="font-medium text-lg">Image URL</label>
+        <label htmlFor="image-url" className="font-medium text-lg">Icon</label>
         <input
           type="text"
           id="image-url"
@@ -38,6 +52,7 @@ const AddWidget = (): JSX.Element => {
       >
         <button
           className="w-32 p-1.5 bg-neutral-500 hover:bg-neutral-700"
+          onClick={() => handleForm()}
         >Create Widget</button>
       </div>
     </>
