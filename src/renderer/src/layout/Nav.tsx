@@ -1,30 +1,14 @@
 import { Icon } from '@iconify/react'
-import { useState, useRef, useCallback } from "react";
+import { useContext, useState, useRef, useCallback } from "react";
 import { Link } from "react-router-dom"
+import WidgetContext from '@renderer/context/WidgetContext';
 
 function Nav(): JSX.Element {
   const dragItem: any = useRef();
   const dragOverItem: any = useRef();
   const draggedItem: any = useRef();
 
-  const [widgetList, setWidgetList] = useState([
-    {
-      id: 0,
-      name: "School notes",
-      type: "notes",
-      image: "https://i.pinimg.com/564x/fe/f2/9b/fef29bb76af39f6689de29c0534526ea.jpg"
-    }, {
-      id: 1,
-      name: "Work notes",
-      type: "notes",
-      image: "https://64.media.tumblr.com/80daec87a3196684b248c11e506d460b/tumblr_o0geflpA2y1upe1ufo1_540.gifv"
-    }, {
-      id: 2,
-      name: "Freelancing tasks",
-      type: "tasks",
-      image: "https://64.media.tumblr.com/e3e9cae10225425573f628de91c9570e/tumblr_pdlaisQQrO1xdypq5o1_500.gifv"
-    },
-  ])
+  const { widgets, setWidgets } = useContext(WidgetContext);
 
   const [, setStartPosX] = useState(0);
   const [, setStartPosY] = useState(0);
@@ -53,13 +37,13 @@ function Nav(): JSX.Element {
   const dragEnd = (e: any) => {
     draggedItem.current = null;
     e.currentTarget.style = {}
-    const copyListItems = [...widgetList];
+    const copyListItems = [...widgets];
     const dragItemContent = copyListItems[dragItem.current];
     copyListItems.splice(dragItem.current, 1);
     copyListItems.splice(dragOverItem.current, 0, dragItemContent);
     dragItem.current = null;
     dragOverItem.current = null;
-    setWidgetList(copyListItems);
+    setWidgets(copyListItems);
   };
 
   return (
@@ -67,11 +51,12 @@ function Nav(): JSX.Element {
       <nav
         className="py-1"
       >
+        <h1 className="text-white text-2xl px-3 mt-3">Tealfy <span className="text-sm">0.0.1</span></h1>
         <ul>
           <li>
             <Link
               to="/"
-              className="text-white font-light text-lg px-3 py-3 w-full cursor-pointer flex gap-3 items-center"
+              className="text-white font-light mt-2 text-lg px-3 py-2 w-full cursor-pointer flex gap-3 items-center"
             >
               <img
                 src="https://i.pinimg.com/474x/b7/1a/67/b71a67beb1eb35251e3c9fdd0401ab2c.jpg"
@@ -81,13 +66,13 @@ function Nav(): JSX.Element {
               <span className="whitespace-nowrap overflow-hidden overflow-ellipsis w-40">Home</span>
             </Link>
           </li>
-          <div role="separator" className="w-72 h-px bg-neutral-500 my-2 mx-auto">
+          <div role="separator" className="w-[263px] h-px bg-neutral-500 my-2 mx-auto">
           </div>
         </ul>
         <ul
           className="text-white flex flex-col font-light text-lg gap-1 wrap"
         >
-          {widgetList.map((widget, index) => {
+          {widgets.map((widget, index) => {
             return (
               <li
                 key={widget.id}
@@ -99,11 +84,11 @@ function Nav(): JSX.Element {
               >
                 <Link
                   to=""
-                  className="px-3 py-3 w-full h-full cursor-pointer flex gap-3 items-center"
+                  className="px-3 py-2 w-full h-full cursor-pointer flex gap-3 items-center"
                 >
                   <img
                     src={widget.image}
-                    alt="some random image"
+                    alt={`A beautiful ${widget.type} image`}
                     className="w-12 h-12 object-cover "
                   />
                   <span className="whitespace-nowrap overflow-hidden overflow-ellipsis w-40">{widget.name}</span>
@@ -126,7 +111,7 @@ function Nav(): JSX.Element {
           >
             <Link
               to="/add_widget"
-              className="w-11/12 text-center border-dashed border-2 border-neutral-500 py-3"
+              className="w-11/12 transition-all text-center text-neutral-300 border-dashed border-2 border-neutral-300 py-2 hover:border-neutral-100 hover:text-neutral-100"
             >
               Add new widget
             </Link>

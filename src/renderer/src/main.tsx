@@ -1,14 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Root from './Root'
-import './assets/index.css'
+import Root from '@renderer/Root'
+import '@renderer/assets/index.css'
 
 // Pages
-import Home from './pages/Home';
-import NotFound from './pages/NotFound';
-import Settings from './pages/Settings';
-import AddWidget from './pages/AddWidget';
+import Home from '@renderer/pages/Home';
+import NotFound from '@renderer/pages/NotFound';
+import Settings from '@renderer/pages/Settings';
+import AddWidget from '@renderer/pages/AddWidget';
 
 const router = createBrowserRouter([
   {

@@ -6,14 +6,14 @@ function Home(): JSX.Element {
   useEffect(() => {
     setInterval(() => {
       setTime(getTime())
-    }, 300);
+    }, 100);
   }, [])
 
   return (
     <>
       <div className="text-white">
         <h1 className="text-4xl">Hello, user!</h1>
-        <div className="mt-5 p-2 w-38 rounded-md bg-neutral-600 flex justify-center">
+        <div className="mt-5 p-2 w-38 h-12 rounded-md bg-neutral-600 flex justify-center">
           <h2 className="text-2xl font-extralight">{time}</h2>
         </div>
         <h3 className="mt-5 text-2xl">Your current tasks</h3>

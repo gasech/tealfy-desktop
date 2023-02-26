@@ -1,8 +1,7 @@
-# electron-app
+# Tealfy Desktop
+A productivity application made with React and TypeScript
 
-An Electron application with React and TypeScript
-
-## Project Setup
+## Setup
 
 ### Install
 
