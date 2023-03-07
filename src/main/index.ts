@@ -1,7 +1,8 @@
-import { app, shell, BrowserWindow } from 'electron'
+import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
+import { saveData, readData, createDefaultData } from './storage'
 
 function createWindow(): void {
   // Create the browser window.
@@ -16,6 +17,10 @@ function createWindow(): void {
       sandbox: false
     }
   })
+
+  // @ts-ignore
+  ipcMain.on('save', (e, data: string) => saveData(data))
+  ipcMain.handle('read', () => readData())
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
@@ -42,6 +47,9 @@ app.whenReady().then(() => {
   // Set app user model id for windows
   electronApp.setAppUserModelId('com.electron')
 
+  // Create Default JSON data if it doesn't exist. 
+  createDefaultData()
+
   // Default open or close DevTools by F12 in development
   // and ignore CommandOrControl + R in production.
   // see https://github.com/alex8088/electron-toolkit/tree/master/packages/utils
@@ -51,7 +59,7 @@ app.whenReady().then(() => {
 
   createWindow()
 
-  app.on('activate', function () {
+  app.on('activate', function() {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow()

@@ -1,20 +1,26 @@
 import WidgetContext from "@renderer/context/WidgetContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import PageWrapper from "@renderer/components/PageWrapper";
 
 const AddWidget = (): JSX.Element => {
   const { widgets, setWidgets } = useContext(WidgetContext);
+  const [formFields, setFormFields] = useState({
+    name: "",
+    type: "",
+    image: "",
+  })
 
   const handleForm = () => {
     setWidgets([...widgets, {
       id: widgets.length + 1,
-      name: "new widgeaaaaaaaat",
-      type: "notes",
-      image: "https://64.media.tumblr.com/d3873273b74b8a978ee935c85208a7a5/tumblr_paccifdfRh1x86knlo1_500.gifv"
+      name: formFields.name,
+      type: formFields.type,
+      image: formFields.image
     }])
   }
 
   return (
-    <>
+    <PageWrapper>
       <h1 className="text-4xl">Add a new widget</h1>
       <div className="flex flex-col gap-1 mt-5">
         <label htmlFor="name" className="font-medium text-lg">Name</label>
@@ -22,6 +28,7 @@ const AddWidget = (): JSX.Element => {
           type="text"
           id="name"
           placeholder="Large"
+          onChange={e => setFormFields({ ...formFields, name: e.target.value })}
           className="p-1.5 rounded-sm placeholder:text-neutral-400 text-neutral-900 w-64"
         />
       </div>
@@ -31,6 +38,7 @@ const AddWidget = (): JSX.Element => {
           type="text"
           id="image-url"
           placeholder="https://content.com/image92.png"
+          onChange={e => setFormFields({ ...formFields, image: e.target.value })}
           className="p-1.5 rounded-sm placeholder:text-neutral-400 text-neutral-900 w-64"
         />
       </div>
@@ -39,6 +47,7 @@ const AddWidget = (): JSX.Element => {
         <select
           id="type"
           placeholder="Select your widget type"
+          onChange={e => setFormFields({ ...formFields, type: e.target.value })}
           className="p-2.5 rounded-sm placeholder:text-neutral-400 focus:outline-none text-neutral-900 cursor-pointer w-64"
         >
           <option>Calendar</option>
@@ -55,7 +64,7 @@ const AddWidget = (): JSX.Element => {
           onClick={() => handleForm()}
         >Create Widget</button>
       </div>
-    </>
+    </PageWrapper>
   )
 }
 

@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+import { getTime, getDate } from '@renderer/utils/TimeUtils'
+import { Link } from 'react-router-dom';
+import PageWrapper from '@renderer/components/PageWrapper';
 
 function Home(): JSX.Element {
   const [time, setTime] = useState("");
@@ -10,47 +13,41 @@ function Home(): JSX.Element {
   }, [])
 
   return (
-    <>
-      <div className="text-white">
+    <PageWrapper>
+      <div className="mt-5 p-2 w-38 h-24 rounded-md bg-neutral-600 flex flex-col justify-center items-center">
         <h1 className="text-4xl">Hello, user!</h1>
-        <div className="mt-5 p-2 w-38 h-12 rounded-md bg-neutral-600 flex justify-center">
-          <h2 className="text-2xl font-extralight">{time}</h2>
-        </div>
-        <h3 className="mt-5 text-2xl">Your current tasks</h3>
-        <ul className="py-1">
-          <li>- Homework page 43</li>
-          <li>- Refactor code.js</li>
-          <li>- Finish prototype</li>
-        </ul>
+        <h2 className="text-2xl font-extralight">{time} {getDate()}</h2>
       </div>
-    </>
+      <h3 className="mt-5 text-2xl">Your routine for today (Wednesday)</h3>
+      <ul className="py-1">
+        <li>08:00 Breakfast</li>
+        <li>09:00 Prepare my day</li>
+        <li className="text-emerald-200">10:00 - 12:00 Work on new repo</li>
+        <li>12:00 Lunch </li>
+        <li>13:00 Gym</li>
+        <li className="font-semibold text-sky-200">Check out your current routine...</li>
+      </ul>
+      <h3 className="mt-5 text-2xl">Your most important tasks</h3>
+      <ul className="py-1">
+        <li>- Homework page 43</li>
+        <li>- Refactor code.js</li>
+        <li>- Finish prototype</li>
+        <li className="font-semibold text-sky-200">See more tasks...</li>
+      </ul>
+      <h3 className="mt-5 text-2xl">Your widgets</h3>
+      <ul className="py-1">
+        <li>- School Notes</li>
+        <li>- Work notes</li>
+        <li>- Freelancing tasks</li>
+        <li className="font-semibold text-sky-200">
+          <Link
+            to="/add_widget"
+            className="hover:underline"
+          >Create a new one...</Link>
+        </li>
+      </ul>
+    </PageWrapper>
   )
-}
-
-const getTime = (): string => {
-  let date: Date = new Date();
-
-  let h = date.getHours();
-  let m = date.getMinutes();
-  let s = date.getSeconds();
-  let session: string = "AM";
-
-  if (h == 0) {
-    h = 12;
-  }
-
-  if (h > 12) {
-    h = h - 12;
-    session = "PM";
-  }
-
-  let hText = (h < 10) ? "0" + h : h;
-  let mText = (m < 10) ? "0" + m : m;
-  let sText = (s < 10) ? "0" + s : s;
-
-  let time = `${hText}:${mText}:${sText} ${session}`;
-
-  return time;
 }
 
 export default Home; 

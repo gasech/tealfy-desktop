@@ -1,6 +1,6 @@
 import { Icon } from '@iconify/react'
-import { useContext, useState, useRef, useCallback } from "react";
 import { Link } from "react-router-dom"
+import { useContext, useState, useRef, useCallback } from "react";
 import WidgetContext from '@renderer/context/WidgetContext';
 
 function Nav(): JSX.Element {
@@ -111,7 +111,7 @@ function Nav(): JSX.Element {
           >
             <Link
               to="/add_widget"
-              className="w-10/12 transition-all text-center text-neutral-400 border-dashed border border-neutral-400 py-2 hover:border-neutral-100 hover:text-neutral-100"
+              className="w-10/12 transition-all text-center text-neutral-400 border-dashed border border-neutral-400 py-2 hover:border-neutral-300 hover:text-neutral-300"
             >
               Add new widget
             </Link>

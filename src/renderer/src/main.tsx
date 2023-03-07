@@ -4,6 +4,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from '@renderer/Root'
 import '@renderer/assets/index.css'
 
+// Provider
+
 // Pages
 import Home from '@renderer/pages/Home';
 import NotFound from '@renderer/pages/NotFound';
