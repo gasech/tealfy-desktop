@@ -7,28 +7,33 @@ import '@renderer/assets/index.css'
 // Provider
 
 // Pages
-import Home from '@renderer/pages/Home';
-import NotFound from '@renderer/pages/NotFound';
-import Settings from '@renderer/pages/Settings';
-import AddWidget from '@renderer/pages/AddWidget';
+import HomePage from '@renderer/pages/HomePage';
+import NotFoundPage from '@renderer/pages/NotFoundPage';
+import SettingsPage from '@renderer/pages/SettingsPage';
+import AddWidgetPage from '@renderer/pages/AddWidgetPage';
+import WidgetPage from '@renderer/pages/WidgetPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    errorElement: <NotFound />,
+    errorElement: <NotFoundPage />,
     children: [
       {
         index: true,
-        element: <Home />
+        element: <HomePage />
+      },
+      {
+        path: "/widgets/:id",
+        element: <WidgetPage />
       },
       {
         path: "/add_widget",
-        element: <AddWidget />
+        element: <AddWidgetPage />
       },
       {
         path: "/settings",
-        element: <Settings />
+        element: <SettingsPage />
       }
     ]
   },

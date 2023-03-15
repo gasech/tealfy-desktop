@@ -53,7 +53,7 @@ export const getDate = (): string => {
   let month = date.getMonth();
   let year = date.getFullYear();
 
-  let daysWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Saturday"]
+  let daysWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
   return `${daysWeek[day]}, ${dayMonth}.${month + 1}.${year}`
 }

@@ -9,7 +9,7 @@ const handleClick = () => {
   window.electron.ipcRenderer.send('save', JSON.stringify(data, null, 2))
 }
 
-function Settings(): JSX.Element {
+function SettingsPage(): JSX.Element {
   return (
     <PageWrapper>
       <h1 className="text-4xl text-white">Settings</h1>
@@ -80,4 +80,4 @@ function Settings(): JSX.Element {
   )
 }
 
-export default Settings;
+export default SettingsPage;

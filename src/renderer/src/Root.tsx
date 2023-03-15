@@ -6,7 +6,7 @@ function Root(): JSX.Element {
   return (
     <WidgetProvider>
       <Nav />
-      <div className="absolute left-72 p-6 text-white w-4/6 h-screen overflow-scroll">
+      <div className="absolute left-72 p-6 w-4/6 h-screen overflow-scroll">
         <Outlet />
       </div>
     </WidgetProvider >
